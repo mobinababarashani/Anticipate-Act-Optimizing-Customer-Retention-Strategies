@@ -1,3 +1,11 @@
+Metadata-Version: 2.4
+Name: telco-churn
+Version: 0.1.0
+Summary: Telco customer churn prediction and retention scoring workflow
+Author: Your Name
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
 # Anticipate & Act: Customer Retention Intelligence
 
 ## Overview
@@ -137,15 +145,12 @@ These features make the model easier to explain because they connect predictions
 |   |-- customer_scores.csv
 |   `-- feature_importance.csv
 |-- src/
-|   `-- telco_churn/
-|       |-- __init__.py
-|       |-- data_preprocessing.py
-|       |-- evaluate_model.py
-|       |-- feature_engineering.py
-|       |-- predict.py
-|       |-- train_model.py
-|       `-- utils.py
-|-- pyproject.toml
+|   |-- data_preprocessing.py
+|   |-- evaluate_model.py
+|   |-- feature_engineering.py
+|   |-- predict.py
+|   |-- train_model.py
+|   `-- utils.py
 |-- requirements.txt
 `-- README.md
 ```
@@ -158,13 +163,11 @@ These features make the model easier to explain because they connect predictions
 | --- | --- |
 | `data/raw_data/` | Stores the original Telco churn dataset. This should remain unchanged. |
 | `data/processed/` | Stores train/test splits after cleaning, feature engineering, encoding, and scaling. |
-| `src/telco_churn/feature_engineering.py` | Central preprocessing and feature engineering logic used by both training and inference. |
-| `src/telco_churn/data_preprocessing.py` | Builds processed train/test datasets and saves the scaler and feature column list. |
-| `src/telco_churn/train_model.py` | Trains candidate models, compares ROC-AUC, and saves the best model. |
-| `src/telco_churn/evaluate_model.py` | Evaluates the final model and generates metrics, plots, and reports. |
-| `src/telco_churn/predict.py` | Scores new customer CSV files and produces churn probabilities and risk segments. |
-| `src/telco_churn/utils.py` | Defines project paths and shared load/save helpers. |
-| `pyproject.toml` | Package configuration for the `src` layout and editable installs. |
+| `src/feature_engineering.py` | Central preprocessing and feature engineering logic used by both training and inference. |
+| `src/data_preprocessing.py` | Builds processed train/test datasets and saves the scaler and feature column list. |
+| `src/train_model.py` | Trains candidate models, compares ROC-AUC, and saves the best model. |
+| `src/evaluate_model.py` | Evaluates the final model and generates metrics, plots, and reports. |
+| `src/predict.py` | Scores new customer CSV files and produces churn probabilities and risk segments. |
 | `app/streamlit_app.py` | Interactive demo app for single-customer and batch scoring. |
 | `models/` | Stores production artifacts: final model, scaler, feature columns, and model scores. |
 | `reports/` | Stores business and technical outputs such as scored customers, feature importance, and executive report. |
@@ -174,49 +177,40 @@ These features make the model easier to explain because they connect predictions
 
 ## How to Run
 
-Run commands from the project root.
-
-### 1. Install dependencies and the package
+### 1. Install dependencies
 
 ```bash
 pip install -r requirements.txt
-pip install -e .
-```
-
-Verify the package import:
-
-```bash
-python -c "from telco_churn.predict import score_customers; print('ok')"
 ```
 
 ### 2. Regenerate processed data
 
 ```bash
-python -m telco_churn.data_preprocessing
+python src/data_preprocessing.py
 ```
 
 ### 3. Train and save the final model
 
 ```bash
-python -m telco_churn.train_model
+python src/train_model.py
 ```
 
 ### 4. Evaluate the model and generate reports
 
 ```bash
-python -m telco_churn.evaluate_model
+python src/evaluate_model.py
 ```
 
 You can also evaluate with a custom threshold:
 
 ```bash
-python -m telco_churn.evaluate_model --threshold 0.40
+python src/evaluate_model.py --threshold 0.40
 ```
 
 ### 5. Score a customer CSV
 
 ```bash
-python -m telco_churn.predict \
+python src/predict.py \
   --input data/raw_data/rawdata-Telco-Customer-Churn.csv \
   --output reports/customer_scores.csv
 ```
@@ -225,13 +219,6 @@ python -m telco_churn.predict \
 
 ```bash
 streamlit run app/streamlit_app.py
-```
-
-The Streamlit app imports from the installed package:
-
-```python
-from telco_churn.predict import score_customers
-from telco_churn.utils import MODELS_DIR, get_feature_columns, load_model
 ```
 
 ---

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telco-churn"
+version = "0.1.0"
+description = "Telco customer churn prediction and retention scoring workflow"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Your Name" }
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["telco_churn*"]

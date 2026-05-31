@@ -1,0 +1,16 @@
+feature,importance
+ContractRisk,0.2530899
+InternetService_Fiber optic,0.13302547
+ChargeDifference,0.0689233
+PaymentMethod_Electronic check,0.059708454
+InternetService_No,0.04864569
+tenure,0.03872447
+StreamingTV,0.036819562
+SupportGap,0.03503815
+StreamingMovies,0.03210918
+PaperlessBilling,0.027224995
+MonthlyCharges,0.025065081
+PhoneService,0.021153387
+OnlineSecurity,0.020111304
+TotalCharges,0.019955609
+Dependents,0.018682567
