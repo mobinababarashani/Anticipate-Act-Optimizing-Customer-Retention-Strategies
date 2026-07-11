@@ -9,7 +9,7 @@ description = "Telco customer churn prediction and retention scoring workflow"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    { name = "Your Name" }
+    { name = "Mobina Babarashani" }
 ]
 
 [tool.setuptools.packages.find]
