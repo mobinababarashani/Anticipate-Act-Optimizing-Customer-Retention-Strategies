@@ -21,7 +21,23 @@ def build_processed_dataset(raw_path=RAW_DATA_PATH, test_size: float = 0.2, rand
 
     df = clean_telco_data(load_raw_data(raw_path))
     X = df.drop(columns=["Churn"])
-    y = df["Churn"]
+
+    y = (
+        df["Churn"]
+        .astype(str)
+        .str.strip()
+        .map({
+            "Yes": 1,
+            "No": 0,
+            "1": 1,
+            "0": 0,
+        })
+    )
+
+    if y.isna().any():
+        raise ValueError("Churn column contains unexpected values.")
+
+    y = y.astype(int)
 
     X_train, X_test, y_train, y_test = train_test_split(
         X,

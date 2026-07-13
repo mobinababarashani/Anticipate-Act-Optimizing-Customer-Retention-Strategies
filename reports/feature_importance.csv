@@ -14,3 +14,17 @@ PhoneService,0.021153387
 OnlineSecurity,0.020111304
 TotalCharges,0.019955609
 Dependents,0.018682567
+AvgCharges,0.018598462
+MultipleLines_Yes,0.018498285
+SeniorCitizen,0.017396156
+CustomerValue,0.01634567
+MultipleLines_No phone service,0.013388667
+OnlineBackup,0.013220785
+TechSupport,0.0130828675
+gender,0.010102487
+ServiceCoverageRatio,0.009910881
+Partner,0.008624915
+PaymentMethod_Mailed check,0.007864648
+DeviceProtection,0.007850487
+PaymentMethod_Credit card (automatic),0.0068385815
+EarlyLifecycle,0.0

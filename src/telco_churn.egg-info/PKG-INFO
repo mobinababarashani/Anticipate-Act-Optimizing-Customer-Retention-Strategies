@@ -1,3 +1,11 @@
+Metadata-Version: 2.4
+Name: telco-churn
+Version: 0.1.0
+Summary: Telco customer churn prediction and retention scoring workflow
+Author: Mobina Babarashani
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
 # Anticipate & Act: Customer Retention Intelligence
 
 ## Overview
@@ -201,7 +209,7 @@ python -m telco_churn.data_preprocessing
 python -m telco_churn.train_model
 ```
 
-### 4. Evaluate the model
+### 4. Evaluate the model and generate reports
 
 ```bash
 python -m telco_churn.evaluate_model
@@ -257,6 +265,17 @@ from telco_churn.utils import MODELS_DIR, get_feature_columns, load_model
 
 These findings should be treated as decision-support signals, not causal proof. Any retention offer strategy should be validated through a controlled pilot or A/B test.
 
+---
+
+## Interview Talking Points
+
+- I framed churn as a retention prioritization problem, not just a classification benchmark.
+- I separated notebooks from reusable source code so the workflow can be rerun end-to-end.
+- I engineered features that connect model behavior to business actions.
+- I compared a linear baseline, a tree ensemble, and a boosted model before choosing the final estimator.
+- I would not rely only on a 0.50 threshold; I would tune campaign targeting based on budget, capacity, customer value, and expected save rate.
+- I fixed an inference risk where one-hot encoding can break during single-row prediction if feature columns are not aligned.
+- I would validate retention actions through controlled experiments because the model identifies risk, not guaranteed causality.
 
 ---
 
